@@ -1,0 +1,26 @@
+{
+  "token": {
+    "colorPrimary": "#820d13",
+    "colorInfo": "#820d13"
+  },
+  "components": {
+    "Menu": {
+      "colorItemBg": "#820d13",
+      "colorItemBgSelected": "#5c050c",
+      "colorItemTextSelectedHorizontal": "#ffffff",
+      "colorItemTextSelected": "#ffffff",
+      "colorItemText": "#ffffff",
+      "colorItemTextHover": "#ffffff",
+      "itemMarginInline": 0,
+      "radiusItem": 0,
+      "radiusSubMenuItem": 0,
+      "colorGroupTitle": "#ffffff",
+      "colorSubItemBg": "transparent",
+      "colorActiveBarHeight": 2,
+      "colorActiveBarBorderSize": 0
+    },
+    "Layout": {
+      "colorBgHeader": "#820d13"
+    }
+  }
+}
