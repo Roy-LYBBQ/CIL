@@ -1,13 +1,14 @@
 import { NextPage } from 'next';
 import React, { ReactElement, ReactNode } from 'react';
 import type { AppProps } from 'next/app';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, theme } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
-import antdTheme from '@/styles/antdTheme.json';
 import NoSsr from '@/components/NoSsr';
-
-import '@/styles/globals.css';
+import antdTheme from '@/styles/antdTheme.json';
 import { DefaultLayout } from '@/layout/DefaultLayout';
+
+import '@/styles/globals.scss';
+import 'tailwindcss/tailwind.css';
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -23,7 +24,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <ConfigProvider
       locale={zhCN}
-      theme={antdTheme}
+      theme={{
+        algorithm: theme.darkAlgorithm,
+        ...antdTheme,
+      }}
+      prefixCls="typus"
     >
       <NoSsr>
         {getLayout(<Component {...pageProps} />)}
