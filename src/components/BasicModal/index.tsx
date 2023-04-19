@@ -3,6 +3,7 @@ import { Button, Modal, ModalProps } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import Image from 'next/image';
 import { Loading } from '@/components/Loading';
+import { LOGO_URL } from '../../common/consts';
 
 export interface BaiscModalProps extends ModalProps {
   loading?: boolean;
@@ -39,7 +40,7 @@ export const BasicModal = ({
         <div className="basis-1/2" />
         <div className="shrink flex items-center">
           <Image
-            src="https://typus-1252071452.cos.ap-guangzhou.myqcloud.com/logo1.svg"
+            src={LOGO_URL}
             alt="Typus logo"
             width={30}
             height={30}
@@ -79,7 +80,7 @@ export const BasicModal = ({
         </div>
       }
       {!loading && modalHeader}
-      {!loading && <div className="typus-modal-main mx-[32px] overflow-y-auto flex-1">
+      {!loading && <div className="typus-modal-main px-[32px] overflow-y-auto flex-1">
         {title &&
           <div className="my-[20px] text-[30px] font-bold">
             <span>{title}</span>

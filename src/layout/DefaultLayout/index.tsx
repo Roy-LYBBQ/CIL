@@ -3,8 +3,8 @@ import { NavigationBar } from '@/layout/components/NavigationBar';
 
 export const DefaultLayout = (page: ReactElement) => {
   return (
-    <div>
-      <div>
+    <div className="flex">
+      <div className="basis-[250px] flex-shrink-0 flex-grow-0">
         <NavigationBar />
       </div>
       <div className="main">
