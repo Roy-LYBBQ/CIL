@@ -1,14 +1,56 @@
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: rgb(0, 0, 0);
+  --background-rgb: rgb(255, 255, 255);
+
+  --FG-1: rgb(26, 26, 26);
+  --FG-2: rgb(51, 51, 51);
+  --FG-3: rgb(77, 77, 77);
+  --FG-4: rgb(102, 102, 102);
+  --FG-5: rgb(128, 128, 128);
+  --FG-6: rgb(153, 153, 153);
+  --FG-7: rgb(179, 179, 179);
+  --FG-8: rgb(204, 204, 204);
+  --FG-9: rgb(230, 230, 230);
+  --FG-10:rgb(255, 255, 255);
+
+  --BG-1: rgb(0, 0, 0);
+  --BG-2: rgb(26, 26, 26);
+  --BG-3:  rgb(51, 51, 51);
+  --BG-4: rgb(77, 77, 77);
+  --BG-5: rgb(102, 102, 102);
+  --BG-6: rgb(128, 128, 128);
+  --BG-7: rgb(153, 153, 153);
+  --BG-8: rgb(179, 179, 179);
+  --BG-9: rgb(204, 204, 204);
+  --BG-10: rgb(230, 230, 230);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: rgb(255, 255, 255);
+    --background-rgb: rgb(0, 0, 0);
+
+    --FG-1: rgb(0, 0, 0);
+    --FG-2: rgb(26, 26, 26);
+    --FG-3: rgb(51, 51, 51);
+    --FG-4: rgb(77, 77, 77);
+    --FG-5: rgb(102, 102, 102);
+    --FG-6: rgb(128, 128, 128);
+    --FG-7: rgb(153, 153, 153);
+    --FG-8: rgb(179, 179, 179);
+    --FG-9: rgb(204, 204, 204);
+    --FG-10: rgb(230, 230, 230);
+
+    --BG-1: rgb(26, 26, 26);
+    --BG-2: rgb(51, 51, 51);
+    --BG-3: rgb(77, 77, 77);
+    --BG-4: rgb(102, 102, 102);
+    --BG-5: rgb(128, 128, 128);
+    --BG-6: rgb(153, 153, 153);
+    --BG-7: rgb(179, 179, 179);
+    --BG-8: rgb(204, 204, 204);
+    --BG-9: rgb(230, 230, 230);
+    --BG-10: rgb(255, 255, 255);
   }
 }
 
@@ -35,10 +77,8 @@ html, html * {
 
 body {
   margin: 0;
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  color: var(--foreground-rgb);
+  background: var(--background-rgb);
 }
 
 .typus-modal {
