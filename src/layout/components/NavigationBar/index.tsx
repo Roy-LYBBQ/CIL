@@ -1,12 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from 'antd';
 import classNames from 'classnames';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { LOGO_URL } from '../../../common/consts';
 import { NAV_ITEMS } from './nav_items';
 
 export const NavigationBar = () => {
+  const router = useRouter();
   const [selected, setSelected] = useState(NAV_ITEMS[0].key);
+
+  useEffect(() => {
+    const { pathname } = router;
+    const [, path] = pathname.split('/');
+
+    const index = NAV_ITEMS.findIndex(item => item.path === `/${path}`);
+
+    if (index !== -1) {
+      setSelected(NAV_ITEMS[index].key);
+    }
+  }, [router]);
 
   return (
     <div className="l-0 t-0 fixed w-[230px] flex flex-col gap-[10px] px-[10px] overflow-y-auto h-[100vh]">
@@ -33,7 +46,7 @@ export const NavigationBar = () => {
                 'flex items-center gap-[10px]',
                 { 'font-bold': item.key === selected },
               )}
-              onClick={() => setSelected(item.key)}
+              onClick={() => router.push(item.path)}
             >
               <Icon
                 className={classNames(
