@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { NavigationBar } from '@/layout/components/NavigationBar';
-import { ToolBar } from '../components/ToolBar';
+import { WidgetBar } from '../components/WidgetBar';
 
 export const DefaultLayout = (page: ReactElement) => {
   return (
@@ -12,7 +12,7 @@ export const DefaultLayout = (page: ReactElement) => {
         {page}
       </div>
       <div className="basis-[300px] flex-shrink-0 flex-grow-0 text-center">
-        <ToolBar />
+        <WidgetBar />
       </div>
     </div>
   );

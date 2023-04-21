@@ -1,6 +1,6 @@
 import { Calendar } from './components/Calendar';
 
-export const ToolBar = () => {
+export const WidgetBar = () => {
   return (
     <div className="px-[16px] overflow-y-auto max-h-[100vh]">
       <div className="my-[16px] flex flex-col gap-[16px]">

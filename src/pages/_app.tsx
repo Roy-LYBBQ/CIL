@@ -5,6 +5,7 @@ import { ConfigProvider, theme } from 'antd';
 import dayjs from 'dayjs';
 import zhCN from 'antd/lib/locale/zh_CN';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
+import Head from 'next/head';
 import NoSsr from '@/components/NoSsr';
 import antdTheme from '@/styles/antdTheme.json';
 import { DefaultLayout } from '@/layout/DefaultLayout';
@@ -34,6 +35,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       }}
       prefixCls="typus"
     >
+      <Head>
+        <title>Typus</title>
+      </Head>
       <NoSsr>
         {getLayout(<Component {...pageProps} />)}
       </NoSsr>
