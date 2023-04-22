@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'antd';
 import classNames from 'classnames';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { LOGO_URL } from '../../../common/consts';
 import { NAV_ITEMS } from './nav_items';
@@ -23,7 +22,7 @@ export const NavigationBar = () => {
 
   return (
     <div className="l-0 t-0 fixed w-[230px] flex flex-col gap-[10px] px-[10px] overflow-y-auto h-[100vh]">
-      <Image
+      <img
         alt="logo"
         src={LOGO_URL}
         width={30}

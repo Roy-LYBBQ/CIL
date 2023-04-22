@@ -36,7 +36,7 @@ const upload2Cloud = async (url: string, file: File | Blob) => {
   const res = await putFile(url, file);
 
   if (res?.code !== 0) {
-    throw new Error('上传失败' + res?.msg);
+    throw new Error('上传失败' + res?.message);
   }
 };
 

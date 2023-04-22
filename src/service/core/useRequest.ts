@@ -1,5 +1,6 @@
-import useSWR, { Key, KeyedMutator } from 'swr';
+import useSWR, { Key, KeyedMutator, SWRConfiguration } from 'swr';
 import { message } from 'antd';
+import omit from 'lodash/omit';
 import { getAccessToken } from '@/common/access-token';
 
 export interface useGetProps {
@@ -11,7 +12,8 @@ export interface useGetProps {
 export interface dataCarrier<T> {
   data: T;
   code: number;
-  msg: string;
+  message: string;
+  success: boolean;
 }
 
 // front end swr type
@@ -22,7 +24,11 @@ export interface dataObject<T> {
   mutate: KeyedMutator<dataCarrier<T>>;
 }
 
-const fetcher = async (url: RequestInfo, configs?: RequestInit, headers?: HeadersInit) => {
+const fetcher = async ({ url, configs, headers }: {
+  url: RequestInfo;
+  configs?: RequestInit;
+  headers?: HeadersInit;
+}) => {
   const token = getAccessToken();
 
   const res = await fetch(url, {
@@ -43,7 +49,7 @@ const fetcher = async (url: RequestInfo, configs?: RequestInit, headers?: Header
 
   return res.json().then((data: dataCarrier<any>) => {
     if (data.code !== 0) {
-      message.error(data.msg);
+      message.error(data.message);
     }
 
     return data;
@@ -55,12 +61,11 @@ export const useGet = <T>(
   config?: {
     configs?: RequestInit;
     headers?: HeadersInit;
-    onSuccess?: (data: T) => void;
-  },
+  } & SWRConfiguration,
 ): dataObject<T> => {
-  const { configs, headers, onSuccess } = config || {};
-  const { data, error, mutate } = useSWR<dataCarrier<T>>(key ? [key, configs, headers] : null, fetcher, {
-    onSuccess: (data) => onSuccess?.(data.data),
+  const { configs, headers } = config || {};
+  const { data, error, mutate } = useSWR<dataCarrier<T>>(key ? { url: key, configs, headers } : null, fetcher, {
+    ...omit(config, ['configs', 'headers']),
   });
 
   return {
@@ -73,7 +78,13 @@ export const useGet = <T>(
 
 const universal =
   async <T>(method: string, url: RequestInfo, body?: Record<any, any>): Promise<dataCarrier<T>> => {
-    const res = await fetcher(url, { body: body ? JSON.stringify(body) : undefined, method });
+    const res = await fetcher({
+      url: url,
+      configs: {
+        body: body ? JSON.stringify(body) : undefined,
+        method,
+      },
+    });
 
     return res;
   };
@@ -109,13 +120,15 @@ export const putFile = async (url: RequestInfo, file: File | Blob): Promise<data
     return {
       data: null,
       code: 0,
-      msg: '上传成功',
+      message: '上传成功',
+      success: false,
     };
   } else {
     return {
       data: null,
       code: -1,
-      msg: '上传失败',
+      message: '上传失败',
+      success: false,
     };
   }
 };
