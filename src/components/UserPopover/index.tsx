@@ -39,11 +39,15 @@ export const UserPopover = ({
 
   const userInfo = typeof user === 'object' ? user : data;
 
+  const content = useMemo(() => {
+    return <UserPopoverCard user={userInfo} />;
+  }, [userInfo]);
+
   return (
     <Popover
       arrow={false}
       overlayInnerStyle={{ padding: '0', overflow: 'hidden' }}
-      content={<UserPopoverCard user={userInfo} />}
+      content={content}
       onOpenChange={(open) => {
         setShow(open);
       }}
