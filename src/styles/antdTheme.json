@@ -1,4 +1,7 @@
 {
+  "token": {
+    "fontSize": 15
+  },
   "components": {
     "Button": {
       "controlHeight": 32,

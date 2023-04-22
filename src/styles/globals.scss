@@ -75,6 +75,10 @@ html, html * {
   }
 }
 
+html {
+  font-size: 15px;
+}
+
 body {
   margin: 0;
   color: var(--foreground-rgb);

@@ -10,6 +10,7 @@ export const Loading = ({
 }: LoadingProps) => {
   return (
     <Spin
+      style={{ display: 'block' }}
       indicator={
         <LoadingOutlined
           spin
